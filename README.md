@@ -59,4 +59,3 @@ just rust    # Run Rust (cargo run --release)
 just goose   # Run Goose (goose run main.goose)
 ```
 
-~~~
