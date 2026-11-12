@@ -23,3 +23,13 @@ goose:
     @echo "=== Running Goose benchmark ==="
     @goose run main.goose
 
+# Go investigation: run 1,000,000 iterations comparison across all routines
+compare-go:
+    @go test -v -run TestCompareAll1M
+
+# Go investigation: micro-benchmarks with memory allocations
+bench-go:
+    @echo "=== Running Go Benchmarks ==="
+    @go test -bench=. -benchmem -run=^$
+
+
