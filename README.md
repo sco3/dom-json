@@ -35,10 +35,9 @@ In this category, the parser has no compile-time schema. It parses the arbitrary
 | **Goose** | `json::Node` | Native AST DOM with buffer reuse, `goose build` (`main.goose`) | **236.00 ms** | **1.00x (fastest)** |
 | **Rust** | `serde_json::Value` | Dynamic DOM enum tree (`src/main.rs`) | **587.70 ms** | **2.49x** |
 | **Go** | `encoding/json/v2` | `map[string]any` with `clear(m)` reuse (`main_test.go`) | **2,364.44 ms** | **10.02x** |
-| **Go** | `encoding/json/v2` | `map[string]any` fresh allocations (`main_test.go`) | **2,570.84 ms** | **10.89x** |
 
 ### Why Go Dynamic Parsing is ~4x Slower than Rust (~10x Slower than Goose)
-- **Memory allocations & GC pressure:** Unmarshaling an untyped payload into `map[string]any` allocates nested map buckets, slice headers for arrays (`"tags"`), and boxes primitive values (`float64`, `string`) into interface values (`any`). This performs **14 heap allocations (528 B/op)** per parse with buffer reuse (**16 allocs / 864 B/op** fresh)—totaling **14–16 million heap allocations** (~528–864 MB memory allocated) across 1,000,000 iterations, keeping the Go GC under continuous load.
+- **Memory allocations & GC pressure:** Unmarshaling an untyped payload into `map[string]any` allocates nested map buckets, slice headers for arrays (`"tags"`), and boxes primitive values (`float64`, `string`) into interface values (`any`). This performs **14 heap allocations (528 B/op)** per parse with buffer reuse—totaling **14 million heap allocations** (~528 MB memory allocated) across 1,000,000 iterations, keeping the Go GC under continuous load.
 - **Reflection:** Decoding into untyped `any` values requires runtime reflection to resolve types on every field. Even the optimized `encoding/json/v2` still pays this per-value reflection cost, keeping dynamic map parsing an order of magnitude behind typed struct parsing and compiled parsers.
 - **Rust & Goose design:** Rust's `serde_json::Value` is a compact enum parsed with no garbage collector overhead. Goose's native `json` parser reuses internal node and decoding buffers (`doc`, `decoded`) across iterations into a flat arena—no per-node heap allocations, no GC—which is why the compiled `main.goose` (**236 ms**) edges out `serde_json::Value` (**588 ms**).
 
@@ -58,7 +57,6 @@ Comparing streaming parsers to dynamic AST parsers is fundamentally an apples-to
 | **Rust** | Zero-Copy Token Scanner | `TokenScanner` byte tokenizer, AWS-Smithy style (`src/main.rs`) | **213.66 ms** | **1.15x** |
 | **Rust** | `serde` Streaming Visitor | `Deserializer::deserialize_map` with `Visitor` (`src/main.rs`) | **218.25 ms** | **1.17x** |
 | **Go** | `encoding/json/jsontext` | `jsontext.Decoder` with buffer reset (`main_test.go`) | **671.94 ms** | **3.61x** |
-| **Go** | `encoding/json/jsontext` | `jsontext.Decoder` fresh without buffer reset (`main_test.go`) | **1,395.00 ms** | **7.50x** |
 
 ### Streaming Analysis & Production Ecosystems
 - **Goose Streaming (~186 ms):** `streaming.goose` walks tokens with `json::reader` / `json::each_member`, materializing strings into one reused `scratch` buffer and never building a DOM. At **186 ms** it is **1.27x faster than Goose's own DOM parser** (236 ms), **1.15x faster than Rust's zero-copy scanner**, and **3.61x faster than Go's best streaming decoder**—handling ~5.4 million payloads per second per core.
@@ -86,10 +84,8 @@ Measured via `go test -bench=. -benchmem -count=3 -run=^$` (median of 3 runs):
 | Category | Benchmark Routine | Speed (`ns/op`) | Memory (`B/op`) | Allocs (`allocs/op`) |
 |:---|:---|:---:|:---:|:---:|
 | **Streaming** | `BenchmarkV2_JsontextDecoder_Reused` | **676.9 ns/op** | 8 B/op | 1 allocs/op |
-| **Streaming** | `BenchmarkV2_JsontextDecoder_Fresh` | **1,395.0 ns/op** | 736 B/op | 17 allocs/op |
 | **Static Struct** | `BenchmarkV2_Struct` | **953.1 ns/op** | 64 B/op | 1 allocs/op |
 | **Dynamic DOM** | `BenchmarkV2_MapReused` | **2,386.0 ns/op** | 528 B/op | 14 allocs/op |
-| **Dynamic DOM** | `BenchmarkV2_Map` | **2,560.0 ns/op** | 864 B/op | 16 allocs/op |
 
 ---
 

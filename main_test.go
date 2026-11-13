@@ -27,33 +27,7 @@ type payloadStruct struct {
 }
 
 // ---------------------------------------------------------------------------
-// 1. V2 Map (encoding/json/v2 map[string]any)
-// ---------------------------------------------------------------------------
-func parseV2Map(data []byte) result {
-	res := result{"", 0, 0, false}
-	var m map[string]any
-	jsonv2.Unmarshal(data, &m)
-
-	if svc, ok := m["service"].(string); ok {
-		res.svc = svc
-	}
-	if ver, ok := m["version"].(int64); ok {
-		res.ver = int(ver)
-	} else if ver, ok := m["version"].(float64); ok {
-		res.ver = int(ver)
-	}
-	if metrics, ok := m["metrics"].(map[string]any); ok {
-		if lat, ok := metrics["latency_ms"].(float64); ok {
-			res.latency = lat
-		}
-	}
-	_, ok := m["owner"]
-	res.owner = ok
-	return res
-}
-
-// ---------------------------------------------------------------------------
-// 2. V2 Map with reuse (clear(m))
+// 1. V2 Map with reuse (clear(m))
 // ---------------------------------------------------------------------------
 func parseV2MapReused(data []byte, m map[string]any) result {
 	clear(m)
@@ -79,7 +53,7 @@ func parseV2MapReused(data []byte, m map[string]any) result {
 }
 
 // ---------------------------------------------------------------------------
-// 3. V2 jsontext.Decoder (Streaming token decoder with buffer reuse, like Goose)
+// 2. V2 jsontext.Decoder (Streaming token decoder with buffer reuse, like Goose)
 // ---------------------------------------------------------------------------
 func parseJsontextStream(dec *jsontext.Decoder) result {
 	var r result
@@ -132,7 +106,7 @@ func parseJsontextStream(dec *jsontext.Decoder) result {
 }
 
 // ---------------------------------------------------------------------------
-// 4. V2 Struct Unmarshal
+// 3. V2 Struct Unmarshal
 // ---------------------------------------------------------------------------
 func parseV2Struct(data []byte) result {
 	var p payloadStruct
@@ -148,14 +122,6 @@ func parseV2Struct(data []byte) result {
 // ===========================================================================
 // Micro-Benchmarks (go test -bench=. -benchmem)
 // ===========================================================================
-
-func BenchmarkV2_Map(b *testing.B) {
-	var r result
-	for i := 0; i < b.N; i++ {
-		r = parseV2Map(benchmarkData)
-	}
-	_ = r
-}
 
 func BenchmarkV2_MapReused(b *testing.B) {
 	m := make(map[string]any, 8)
@@ -176,16 +142,6 @@ func BenchmarkV2_JsontextDecoder_Reused(b *testing.B) {
 		buf.Reset()
 		buf.Write(benchmarkData)
 		dec.Reset(buf)
-		r = parseJsontextStream(dec)
-	}
-	_ = r
-}
-
-func BenchmarkV2_JsontextDecoder_Fresh(b *testing.B) {
-	var r result
-	for i := 0; i < b.N; i++ {
-		buf := bytes.NewBuffer(benchmarkData)
-		dec := jsontext.NewDecoder(buf)
 		r = parseJsontextStream(dec)
 	}
 	_ = r
@@ -219,10 +175,6 @@ func TestCompareAll1M(t *testing.T) {
 	dec := jsontext.NewDecoder(buf)
 
 	dynamicCases := []testCase{
-		{
-			name: "Go v2 map[string]any",
-			fn:   func() result { return parseV2Map(benchmarkData) },
-		},
 		{
 			name: "Go v2 map[string]any with clear(m) reuse",
 			fn:   func() result { return parseV2MapReused(benchmarkData, mReusedV2) },
