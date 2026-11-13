@@ -1,0 +1,328 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"UI",
+				"UI: Customize Theme"
+			],
+			[
+				"LSP:E",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"LSP",
+				"LSP: Toggle Log Panel"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/dz/prj/dom-json/streaming.goose",
+		"/home/dz/.config/sublime-text/Packages/User/Goose.sublime-syntax",
+		"/home/dz/.config/sublime-text/Goose.sublime-syntax",
+		"/home/dz/.config/sublime-text/Packages/LSP/Syntaxes/ServerLog.sublime-syntax",
+		"/home/dz/prj/dynamic-json/streaming.goose",
+		"/home/dz/.local/groq-api-key.txt",
+		"/home/dz/prj/dynamic-json/src/main.rs",
+		"/home/dz/prj/dynamic-json/main.goose",
+		"/home/dz/prj/dynamic-json/src/main.goose",
+		"/home/dz/prj/hello-spark/src/main/java/sco3/Creator.java",
+		"/home/dz/prj/hello-spark/src/main/java/sco3/Person.java",
+		"/home/dz/prj/hello-spark/src/main/java/sco3/BeanCreator.java",
+		"/home/dz/prj/springboot-hibernate-clickhouse/src/test/java/sco3/EventApiIntegrationTest.java",
+		"/home/dz/prj/springboot-hibernate-clickhouse/.github/workflows/api-tests.yml",
+		"/home/dz/tmp/zapret-discord-youtube-rust/crates/zapret-tui/src/theme.rs",
+		"/opt/zapret2/config",
+		"/home/dz/prj/hello_rust/src/main.goose",
+		"/home/dz/prj/hello-spark/README.md",
+		"/home/dz/prj/hello-spark/build.gradle",
+		"/home/dz/prj/hello_rust/README-amd-ryzen-5-4500u.md",
+		"/home/dz/prj/hello-spark/main.py",
+		"/home/dz/.local/google-ai-studio.key",
+		"/home/dz/tmp/s1-xray-05-11-2026-amnezia.txt",
+		"/home/dz/tmp/s1-xray-05-11-2026.txt",
+		"/home/dz/tmp/ek-share-vpn/ek-s2-xray.txt",
+		"/home/dz/tmp/orcl-create-vm/create-vm.sh",
+		"/home/dz/Downloads/invalid2-invalid-chain.pem",
+		"/home/dz/Downloads/invalid2-invalid.pem",
+		"/home/dz/Downloads/publicvpnlist-vless-4b026d19ff13.txt",
+		"/home/dz/prg/aivpn/server1/client.key",
+		"/home/dz/.ssh/config",
+		"/home/dz/prg/xray/amir-shaman-server1.txt",
+		"/home/dz/prg/xray/amir-shaman-server2.txt",
+		"/home/dz/prg/aivpn/05-iptables.sh",
+		"/home/dz/Downloads/aivpn-debug.txt",
+		"/home/dz/prg/aivpn/client.log",
+		"/home/dz/tmp/oracle-oci-change-ip/README.md",
+		"/home/dz/tmp/amnezia/ek-s2-xray-native.vpn",
+		"/home/dz/tmp/outline/install_server.sh",
+		"/home/dz/prg/xray/amir-shaman-server1.json",
+		"/home/dz/tmp/amnezia/create-vm.sh",
+		"/opt/zapret/config",
+		"/home/dz/tmp/amir-shaman/amir-shaman-server1.txt",
+		"/home/dz/.local/share/io.github.clash-verge-rev.clash-verge-rev/profiles/L2oAyM6XSuD8.yaml",
+		"/home/dz/prg/xray/config.json",
+		"/home/dz/tmp/amnezia/ek-s2-xray.vpn",
+		"/home/dz/tmp/go-and-gate/terraform/main.tf",
+		"/home/dz/Downloads/tor/Sedmoj.igrok.S01.2026.WEB-DLRip/ps",
+		"/home/dz/tmp/oci/c2.sh",
+		"/home/dz/tmp/server-1-82.70.53.10-full",
+		"/home/dz/prj/bis4-platform/bis4-file-sourceconnect/src/main/java/com/tnf/kafka/Persian.java",
+		"/home/dz/tmp/go-and-gate/out",
+		"/home/dz/prj/go-avro-persian/out",
+		"/home/dz/prj/rust-avro/src/bin/converts.rs",
+		"/home/dz/tmp/quarkus-mcp-server/test/src/main/java/io/quarkiverse/mcp/server/test/McpAssured.java",
+		"/home/dz/prj/javawasm-playground/.github/workflows/test.js",
+		"/home/dz/tmp/quarkus-mcp-server/docs/modules/ROOT/pages/concepts-transports.adoc",
+		"/home/dz/prj/mcp-plantuml-quarkus-2026-07-28/Justfile",
+		"/home/dz/tmp/quarkus-mcp-server/test/src/main/java/io/quarkiverse/mcp/server/test/McpStreamableTestClientImpl.java",
+		"/home/dz/prj/wasm-parser/styles.css",
+		"/home/dz/prj/wasm-parser/.github/test.yml",
+		"/home/dz/prg/vpn-configs-for-russia/BLACK_VLESS_RUS_mobile.txt",
+		"/home/dz/prj/vpn-configs-for-russia/BLACK_VLESS_RUS.txt",
+		"/home/dz/prj/javawasm-playground/build.gradle",
+		"/home/dz/prj/javawasm-playground/.github/workflows/test.yaml",
+		"/home/dz/prj/java_jni_arena/build.gradle",
+		"/home/dz/prj/cv/Dmitry-Zakharov-2001.md",
+		"/home/dz/prj/service-account-springboot/docker-compose.yml",
+		"/home/dz/prj/service-account-springboot/docker-compose.app.yml",
+		"/home/dz/prj/service-account-springboot/docker-compose.infra.yml",
+		"/home/dz/prj/service-account-springboot/docker/clickhouse-init/01-schema.sql",
+		"/home/dz/prj/ress/ress-srv/.tree",
+		"/home/dz/prj/ress/ress-bson/.tree",
+		"/home/dz/prj/service-account-springboot/docker/clickhouse-init/02-seed.sql",
+		"/home/dz/prj/service-account-springboot/1",
+		"/home/dz/prj/service-account-springboot/build.gradle",
+		"/home/dz/prj/cv/Dmitry-Zakharov-prior-2009-.md",
+		"/home/dz/prj/mcp-plantuml-quarkus/build.gradle",
+		"/home/dz/Downloads/agent_06b7ac62-a2da-445d-ab88-b930ba7bb536.log",
+		"/home/dz/prj/hello_rust/src/lib.rs",
+		"/home/dz/prj/hello-python-web/src/main/java/sco3/SpringSquareStringClientReactor.java",
+		"/home/dz/prj/hello-python-web/src/main/java/sco3/NatsSquareStringClientReactorSingle.java",
+		"/home/dz/.ssh/id_sco3.pub",
+		"/home/dz/.ssh/id_scorta_d.pub",
+		"/home/dz/tmp/mt-proto-ss.txt",
+		"/home/dz/tmp/cover.md",
+		"/home/dz/tmp/hadoop/hadoop-dist/src/main/compose/hadoop/docker-compose.yaml",
+		"/home/dz/prj/hello-iceberg/build.gradle",
+		"/home/dz/prj/xray/url.txt",
+		"/home/dz/prj/xray/config.json",
+		"/home/dz/prj/core_agent/PR_DESCRIPTION.md",
+		"/home/dz/Downloads/outline-server.txt",
+		"/home/dz/prj/nats-benchmark/data/2m/bench-pub.log.2",
+		"/home/dz/prj/nats-benchmark/data/2m/bench-sub.log.2",
+		"/home/dz/prj/nats-starter/nats/nats0.log",
+		"/home/dz/prj/agentic-arch-docker-compose/docker-compose.tmpl",
+		"/home/dz/Downloads/application-logs-17437577609-1/log-aggregator.log",
+		"/home/dz/Downloads/agent_39fc3c3d-fc59-4be7-a84d-f840070cfeb6.log",
+		"/home/dz/.ssh/ctx",
+		"/home/dz/prj/jarvis-charts/scripts/cortex",
+		"/home/dz/prj/jarvis-charts/scripts/out",
+		"/home/dz/tmp/llm_mp.py",
+		"/home/dz/tmp/model.py",
+		"/home/dz/prj/core_agent/test/log/faq_expert_1.log",
+		"/home/dz/prj/core_agent/test/log/context.log",
+		"/home/dz/tmp/core_agent/src/core_agent/llm/llm_message_processor.py",
+		"/home/dz/node8.txt",
+		"/home/dz/tmp/test.py",
+		"/home/dz/tmp/core_agent/src/core_agent/llm/lynx-get-aut-code.txt",
+		"/home/dz/tmp/sample.curl",
+		"/home/dz/.local/aws-dev-dzakharov.secret",
+		"/home/dz/Downloads/link.txt",
+		"/home/dz/prj/cortex/src/cortex/main_trio.py",
+		"/home/dz/prj/core_agent/test/session_log/session-logs/gpt_session_a41b64d4-1351-43d2-82fb-8a84979e63ed_4189ebde-b0ee-4e37-8b74-fcdb7cd7f1db_conversation_turn_1",
+		"/home/dz/prj/core_agent/test/session_log/session-logs/gpt_session_a41b64d4-1351-43d2-82fb-8a84979e63ed_4189ebde-b0ee-4e37-8b74-fcdb7cd7f1db_conversation_turn_0",
+		"/home/dz/.config/ghostty/config",
+		"/home/dz/.local/share/JetBrains/Toolbox/logs/toolbox-native.log",
+		"/home/dz/tmp/msg.json",
+		"/home/dz/tmp/core-agent/test/mq/test_nats_with_image.py",
+		"/home/dz/prj/telus_auth/lynx-save.sh",
+		"/home/dz/prj/conversation-stream/scripts/08.01-start-vox-client-statefulset.yaml",
+		"/home/dz/tmp/templates/templates.py",
+		"/home/dz/tmp/t2/templates/templates.py",
+		"/home/dz/tmp/templates/templates_plus_spitfire.py",
+		"/home/dz/tmp/templates/templates_plus_speetfire.py",
+		"/home/dz/prj/cortex/src/cortex/telus/lib/Makefile",
+		"/home/dz/Downloads/pycharm-professional-2023.3.1_Lin/Activation_Code.txt.txt",
+		"/home/dz/prj/cortex/test/test_observer.py"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 154.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 154.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "Cargo.sublime-project",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
