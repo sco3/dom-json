@@ -2,4 +2,9 @@
 json-go
 /main
 /streaming
+/main-goose
+/streaming-goose
 .idea
+json-go.test
+json-go
+opencode.json

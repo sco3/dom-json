@@ -18,20 +18,13 @@ rust:
     @echo "=== Running Rust benchmark ==="
     @cargo run --release
 
-# Goose benchmark (interpreted)
+# Goose benchmark 
 goose:
     @echo "=== Running Goose benchmark ==="
-    @goose run main.goose
-
-# Goose benchmarks as optimized native binaries (use these for README numbers)
-goose-native:
-    @echo "=== Building Goose native binaries ==="
-    @goose build main.goose
-    @goose build streaming.goose
-    @echo "=== Running Goose DOM benchmark (native) ==="
-    @./main
-    @echo "=== Running Goose streaming benchmark (native) ==="
-    @./streaming
+    @goose build main.goose -o main-goose
+    @goose build streaming.goose -o streaming-goose
+    @./main-goose
+    @./streaming-goose
 
 # Go investigation: run 1,000,000 iterations comparison across all routines
 compare-go:
