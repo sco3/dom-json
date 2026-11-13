@@ -382,9 +382,9 @@ func TestCompareAll1M(t *testing.T) {
 	buf := bytes.NewBuffer(benchmarkData)
 	dec := jsontext.NewDecoder(buf)
 
-	cases := []testCase{
+	dynamicCases := []testCase{
 		{
-			name: "Go v1 map[string]any (main.go current)",
+			name: "Go v1 map[string]any (main.go baseline)",
 			fn:   func() result { return parseV1Map(benchmarkData) },
 		},
 		{
@@ -399,8 +399,11 @@ func TestCompareAll1M(t *testing.T) {
 			name: "Go v2 map[string]any with clear(m) reuse",
 			fn:   func() result { return parseV2MapReused(benchmarkData, mReusedV2) },
 		},
+	}
+
+	streamingCases := []testCase{
 		{
-			name: "Go v2 jsontext.Decoder (buffer reuse, like Goose)",
+			name: "Go v2 jsontext.Decoder (buffer reuse)",
 			fn: func() result {
 				buf.Reset()
 				buf.Write(benchmarkData)
@@ -408,6 +411,9 @@ func TestCompareAll1M(t *testing.T) {
 				return parseJsontextStream(dec)
 			},
 		},
+	}
+
+	staticCases := []testCase{
 		{
 			name: "Go v1 typed struct",
 			fn:   func() result { return parseV1Struct(benchmarkData) },
@@ -418,8 +424,8 @@ func TestCompareAll1M(t *testing.T) {
 		},
 	}
 
-	fmt.Println("\n=== Comparing All Go Routines (1,000,000 iterations each) ===")
-	for _, tc := range cases {
+	fmt.Println("\n=== 1. Dynamic (Schemaless) JSON Parsing (1,000,000 iters) ===")
+	for _, tc := range dynamicCases {
 		start := time.Now()
 		var r result
 		for range N {
@@ -431,5 +437,33 @@ func TestCompareAll1M(t *testing.T) {
 			t.Errorf("%s returned incorrect result: %+v", tc.name, r)
 		}
 	}
-	fmt.Println("================================================================")
+
+	fmt.Println("\n=== 2. Streaming JSON Parsing (Token-by-Token, 1,000,000 iters) ===")
+	for _, tc := range streamingCases {
+		start := time.Now()
+		var r result
+		for range N {
+			r = tc.fn()
+		}
+		elapsed := time.Since(start)
+		fmt.Printf("%-50s: %12v | result: %+v\n", tc.name, elapsed, r)
+		if r.svc != "auth-api" || r.ver != 2 || r.latency != 15.4 || r.owner != false {
+			t.Errorf("%s returned incorrect result: %+v", tc.name, r)
+		}
+	}
+
+	fmt.Println("\n=== 3. Static Schema Struct Parsing (1,000,000 iters) ===")
+	for _, tc := range staticCases {
+		start := time.Now()
+		var r result
+		for range N {
+			r = tc.fn()
+		}
+		elapsed := time.Since(start)
+		fmt.Printf("%-50s: %12v | result: %+v\n", tc.name, elapsed, r)
+		if r.svc != "auth-api" || r.ver != 2 || r.latency != 15.4 || r.owner != false {
+			t.Errorf("%s returned incorrect result: %+v", tc.name, r)
+		}
+	}
+	fmt.Println("=================================================================")
 }
